@@ -5,399 +5,95 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)](https://www.typescriptlang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-> A modern, type-safe TypeScript library for Nigerian states, local government areas (LGAs), senatorial districts, capitals, and major towns with **zero dependencies**.
+> A modern, type-safe TypeScript library for Nigerian states, LGAs, senatorial districts, capitals, and major towns with **zero dependencies**.
 
-## ✨ Features
+## Features
 
 - 🎯 **TypeScript First** - Full type safety with comprehensive type definitions
 - 📦 **Zero Dependencies** - Lightweight and fast
 - 🌍 **Complete Data** - All 36 states + FCT with LGAs, senatorial districts, capitals, and major towns
-- 🏛️ **State Capitals** - Get capital cities for all states
-- 🏙️ **Major Towns** - Access major towns for each state
-- 🔍 **Case Insensitive** - Flexible querying (e.g., "lagos", "Lagos", "LAGOS" all work)
-- 🚀 **Modern API** - Intuitive function names (v2.0.0)
-- ✅ **Well Tested** - Comprehensive test coverage
+- 🗺️ **Geopolitical Zones** - Filter and group states by Nigeria's 6 geopolitical zones
+- � **Rich Metadata** - Coordinates, postal codes, population, creation dates, and slogans
+- � **Powerful Search** - Find states by LGA, town, or use fuzzy search
+- ✅ **Well Tested** - 28+ tests ensuring reliability
 
-## 📦 Installation
+## Installation
 
 ```bash
 npm install ng-states-core
 ```
 
-```bash
-yarn add ng-states-core
-```
-
-```bash
-pnpm add ng-states-core
-```
-
-## 🚀 Quick Start
-
-### JavaScript (CommonJS)
-
-```javascript
-const { getStates, getState, getCapital, getLgas } = require("ng-states-core");
-
-// Get all states
-const allStates = getStates();
-console.log(allStates.length); // 37
-
-// Get specific state data
-const lagos = getState("Lagos");
-console.log(lagos.capital); // 'Ikeja'
-console.log(lagos.lgas.length); // 21
-
-// Get just the capital
-const capital = getCapital("Oyo");
-console.log(capital); // 'Ibadan'
-```
-
-**📄 [View full CommonJS example](examples/commonjs-usage.js)**
-
-### TypeScript (ESM)
+## Quick Start
 
 ```typescript
-import {
-  getStates,
-  getState,
-  getStatesAndCapitals,
-  State,
-} from "ng-states-core";
-
-// Type-safe state data
-const allStates: State[] = getStates();
+import { getState, findStateByLga, getStatesByRegion } from "ng-states-core";
 
 // Get complete state data
 const lagos = getState("Lagos");
 console.log(lagos.capital); // 'Ikeja'
-console.log(lagos.towns); // Array of major towns
+console.log(lagos.population); // 15400000
+console.log(lagos.region); // 'South-West'
 
-// Get states with capitals
-const statesAndCapitals = getStatesAndCapitals();
-// [{ state: 'Abia', capital: 'Umuahia' }, ...]
+// Find state by LGA
+const state = findStateByLga("Ikeja");
+console.log(state?.state); // 'Lagos'
+
+// Get all South-West states
+const southWest = getStatesByRegion("South-West");
+// ['Ekiti', 'Lagos', 'Ogun', 'Ondo', 'Osun', 'Oyo']
 ```
 
-**📄 [View full TypeScript example](examples/basic-usage.ts)**
+## Available Functions
 
-## 📚 API Reference
+### State Functions
 
-### `getStates()`
+`getStates()` · `getStateNames()` · `getState()` · `getStatesAndCapitals()` · `getCapital()` · `getLgas()` · `getSenatorialDistricts()` · `getTowns()`
 
-Get all Nigerian states with complete data.
+### Search Functions
 
-**Returns:** `State[]`
+`findStateByLga()` · `findStateByTown()` · `searchStates()` · `searchTowns()`
+
+### Geopolitical Zones
+
+`getGeopoliticalZones()` · `getStatesByRegion()` · `getRegion()`
+
+### Metadata
+
+`getPostalCode()` · `getCoordinates()` · `getPopulation()` · `getCreationDate()` · `getSlogan()`
+
+## Documentation
+
+📚 **[Full Documentation](https://github.com/eminisolomon/ng-states-core/tree/main/docs)** - Comprehensive guides and API reference
+
+� **[Examples](https://github.com/eminisolomon/ng-states-core/tree/main/examples)** - React, Vue, Next.js, and more
+
+🤝 **[Contributing](CONTRIBUTING.md)** - Help improve this package
+
+## Data Coverage
+
+| Category                  | Count |
+| ------------------------- | ----- |
+| States                    | 36    |
+| Federal Capital Territory | 1     |
+| Total LGAs                | 774   |
+| Senatorial Districts      | 109   |
+| State Capitals            | 37    |
+| Major Towns               | 1000+ |
+| Geopolitical Zones        | 6     |
+
+## TypeScript Support
 
 ```typescript
-interface State {
-  state: string;
-  capital: string;
-  lgas: string[];
-  senatorial_districts: string[];
-  towns: string[];
-}
+import type { State, StateData, GeopoliticalZone } from "ng-states-core";
+
+const state: State = getState("Lagos");
+const zone: GeopoliticalZone = "South-West";
 ```
 
-**Example:**
+## License
 
-```javascript
-const allStates = getStates();
-console.log(allStates[0]);
-// {
-//   state: 'Abia',
-//   capital: 'Umuahia',
-//   lgas: ['Aba North', 'Aba South', ...],
-//   senatorial_districts: ['Abia Central', 'Abia North', 'Abia South'],
-//   towns: ['Aba', 'Umuahia', 'Arochukwu', ...]
-// }
-```
+MIT © [Solomon Olatunji](https://github.com/eminisolomon)
 
 ---
 
-### `getStateNames()`
-
-Get an array of all Nigerian state names.
-
-**Returns:** `string[]`
-
-**Example:**
-
-```javascript
-const names = getStateNames();
-console.log(names); // ['Abia', 'Adamawa', 'Akwa Ibom', ...]
-```
-
----
-
-### `getState(state: string)`
-
-Get complete data for a specific state.
-
-**Parameters:**
-
-- `state` (string) - Name of the state (case-insensitive)
-
-**Returns:** `StateData`
-
-**Throws:** `Error` if state is invalid or not found
-
-**Example:**
-
-```javascript
-const lagos = getState("Lagos");
-console.log(lagos);
-// {
-//   state: 'Lagos',
-//   capital: 'Ikeja',
-//   lgas: ['Agege', 'Ajeromi-Ifelodun', ...],
-//   senatorial_districts: ['Lagos Central', 'Lagos East', 'Lagos West'],
-//   towns: ['Ikeja', 'Lekki', 'Victoria Island', ...]
-// }
-```
-
----
-
-### `getStateData(state: string)`
-
-Alias for `getState()`. Get complete data for a specific state.
-
-**Parameters:**
-
-- `state` (string) - Name of the state (case-insensitive)
-
-**Returns:** `StateData`
-
----
-
-### `getStatesAndCapitals()`
-
-Get all states with their capital cities.
-
-**Returns:** `StateWithCapital[]`
-
-```typescript
-interface StateWithCapital {
-  state: string;
-  capital: string;
-}
-```
-
-**Example:**
-
-```javascript
-const statesAndCapitals = getStatesAndCapitals();
-console.log(statesAndCapitals[0]); // { state: 'Abia', capital: 'Umuahia' }
-```
-
----
-
-### `getCapital(state: string)`
-
-Get the capital city of a specific state.
-
-**Parameters:**
-
-- `state` (string) - Name of the state (case-insensitive)
-
-**Returns:** `string`
-
-**Throws:** `Error` if state is invalid or not found
-
-**Example:**
-
-```javascript
-const capital = getCapital("Lagos");
-console.log(capital); // 'Ikeja'
-```
-
----
-
-### `getLgas(state: string)`
-
-Get local government areas for a specific state.
-
-**Parameters:**
-
-- `state` (string) - Name of the state (case-insensitive)
-
-**Returns:** `string[]`
-
-**Throws:** `Error` if state is invalid or not found
-
-**Example:**
-
-```javascript
-const lgas = getLgas("Lagos");
-console.log(lgas.length); // 21
-console.log(lgas); // ['Agege', 'Ajeromi-Ifelodun', ...]
-```
-
----
-
-### `getSenatorialDistricts(state: string)`
-
-Get senatorial districts for a specific state.
-
-**Parameters:**
-
-- `state` (string) - Name of the state (case-insensitive)
-
-**Returns:** `string[]`
-
-**Throws:** `Error` if state is invalid or not found
-
-**Example:**
-
-```javascript
-const districts = getSenatorialDistricts("Lagos");
-console.log(districts); // ['Lagos Central', 'Lagos East', 'Lagos West']
-```
-
----
-
-### `getTowns(state: string)`
-
-Get major towns in a specific state.
-
-**Parameters:**
-
-- `state` (string) - Name of the state (case-insensitive)
-
-**Returns:** `string[]`
-
-**Throws:** `Error` if state is invalid or not found
-
-**Example:**
-
-```javascript
-const towns = getTowns("Lagos");
-console.log(towns); // ['Ikeja', 'Lekki', 'Victoria Island', ...]
-```
-
-## 🎯 TypeScript Support
-
-This package is written in TypeScript and provides full type definitions out of the box.
-
-### Available Types
-
-```typescript
-import type { State, StateData, StateWithCapital } from "ng-states-core";
-
-// Complete state interface
-interface State {
-  state: string;
-  capital: string;
-  lgas: string[];
-  senatorial_districts: string[];
-  towns: string[];
-}
-
-// State data (same as State)
-interface StateData extends State {}
-
-// Simplified state with capital
-interface StateWithCapital {
-  state: string;
-  capital: string;
-}
-```
-
-## 💡 Usage Examples
-
-### React Component
-
-Build a state and LGA selector component with type safety:
-
-**📄 [View React example](examples/react-component.tsx)**
-
-### Vue Component
-
-Create a Vue 3 composition API component:
-
-**📄 [View Vue example](examples/vue-component.vue)**
-
-### More Examples
-
-Check out the [examples](examples/) directory for more usage patterns:
-
-- [basic-usage.ts](examples/basic-usage.ts) - Basic TypeScript usage
-- [commonjs-usage.js](examples/commonjs-usage.js) - CommonJS usage
-- [react-component.tsx](examples/react-component.tsx) - React component
-- [vue-component.vue](examples/vue-component.vue) - Vue component
-
-## 🛠️ Development
-
-### Building from Source
-
-```bash
-# Clone the repository
-git clone https://github.com/atomicman57/ng-states-core.git
-cd ng-states-core
-
-# Install dependencies
-npm install
-
-# Build the package
-npm run build
-
-# Run tests
-npm test
-
-# Development mode (watch)
-npm run dev
-```
-
-### Project Structure
-
-```text
-ng-states-core/
-├── src/
-│   ├── index.ts              # Main module
-│   ├── interface.ts          # TypeScript type definitions
-│   └── statesAndLocalGov.json # Data source
-├── dist/                     # Built files (generated)
-├── test/
-│   └── test.ts              # Test suite
-├── examples/
-│   ├── basic-usage.ts       # TypeScript basic usage
-│   ├── commonjs-usage.js    # CommonJS usage
-│   ├── react-component.tsx  # React component example
-│   └── vue-component.vue    # Vue component example
-├── tsconfig.json            # TypeScript configuration
-└── package.json             # Package metadata
-```
-
-## 🤝 Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository
-2. Create your feature branch: `git checkout -b feature/amazing-feature`
-3. Commit your changes using conventional commits:
-
-   ```bash
-   feat(scope): add new feature
-   fix(scope): fix bug
-   docs(scope): update documentation
-   ```
-
-4. Push to the branch: `git push origin feature/amazing-feature`
-5. Open a Pull Request
-
-### Commit Message Convention
-
-- **Type**: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
-- **Scope**: Specific area of change (e.g., `api`, `types`, `data`)
-- **Subject**: Present tense, lowercase, no period at end
-- **Body** (optional): Detailed explanation of changes
-- **Footer** (optional): Reference issues with `Fixes #123`, `Closes #456`
-
-## 📄 License
-
-This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
-
-## 👨‍💻 Author
-
-**Solomon Olatunji** ([@eminisolomon](https://github.com/eminisolomon))
-
-**Made with ❤️ for Nigeria**
+**Made with ❤️ for Nigeria** 🇳🇬
