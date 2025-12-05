@@ -1,5 +1,5 @@
 import statesAndLocalGov from "./statesAndLocalGov.json";
-import { State, StateData } from "./interface";
+import { State, StateData, StateWithCapital } from "./interface";
 
 /**
  * Normalize input string to lowercase and trim whitespace
@@ -16,22 +16,40 @@ function normalize(input: string): string {
  * @returns Normalized state name
  */
 function normalizeFCT(state: string): string {
-  const fctAliases = ["fct", "f.c.t", "abuja", "f c t"];
+  const fctAliases = [
+    "fct",
+    "f.c.t",
+    "abuja",
+    "f c t",
+    "federal capital territory",
+  ];
   return fctAliases.includes(normalize(state))
     ? "Federal Capital Territory"
     : state;
 }
 
 /**
- * Get all Nigerian states with their local government areas and senatorial districts
+ * Find a state by name (case-insensitive)
+ * @param stateName - Name of the state to find
+ * @returns The state object or undefined
+ */
+function findState(stateName: string): State | undefined {
+  const normalizedName = normalize(normalizeFCT(stateName));
+  return (statesAndLocalGov as State[]).find(
+    (s) => normalize(s.state) === normalizedName
+  );
+}
+
+/**
+ * Get all Nigerian states with complete data
  * @returns Array of all states with complete data
  * @example
  * ```typescript
- * const allStates = all();
+ * const allStates = getStates();
  * console.log(allStates.length); // 37
  * ```
  */
-export function all(): State[] {
+export function getStates(): State[] {
   return statesAndLocalGov as State[];
 }
 
@@ -40,12 +58,95 @@ export function all(): State[] {
  * @returns Array of state names
  * @example
  * ```typescript
- * const stateNames = states();
- * console.log(stateNames); // ['Abia', 'Adamawa', ...]
+ * const names = getStateNames();
+ * console.log(names); // ['Abia', 'Adamawa', ...]
  * ```
  */
-export function states(): string[] {
-  return statesAndLocalGov.map((state) => state.state);
+export function getStateNames(): string[] {
+  return (statesAndLocalGov as State[]).map((state) => state.state);
+}
+
+/**
+ * Get complete data for a specific state
+ * @param state - Name of the state (case-insensitive)
+ * @returns Complete state data
+ * @throws {Error} If state name is invalid or not found
+ * @example
+ * ```typescript
+ * const lagos = getState('Lagos');
+ * console.log(lagos.capital); // 'Ikeja'
+ * ```
+ */
+export function getState(state: string): StateData {
+  if (!state || normalize(state) === "") {
+    throw new Error("Invalid state name");
+  }
+
+  const stateData = findState(state);
+
+  if (!stateData) {
+    throw new Error(`State "${state}" not found`);
+  }
+
+  return stateData as StateData;
+}
+
+/**
+ * Alias for getState() - Get complete data for a specific state
+ * @param state - Name of the state (case-insensitive)
+ * @returns Complete state data
+ * @throws {Error} If state name is invalid or not found
+ */
+export function getStateData(state: string): StateData {
+  return getState(state);
+}
+
+/**
+ * Get all states with their capital cities
+ * @returns Array of states with capitals
+ * @example
+ * ```typescript
+ * const statesAndCapitals = getStatesAndCapitals();
+ * console.log(statesAndCapitals[0]); // { state: 'Abia', capital: 'Umuahia' }
+ * ```
+ */
+export function getStatesAndCapitals(): StateWithCapital[] {
+  return (statesAndLocalGov as State[]).map((state) => ({
+    state: state.state,
+    capital: state.capital,
+  }));
+}
+
+/**
+ * Get the capital city of a specific state
+ * @param state - Name of the state (case-insensitive)
+ * @returns Capital city name
+ * @throws {Error} If state name is invalid or not found
+ * @example
+ * ```typescript
+ * const capital = getCapital('Lagos');
+ * console.log(capital); // 'Ikeja'
+ * ```
+ */
+export function getCapital(state: string): string {
+  const stateData = getState(state);
+  return stateData.capital;
+}
+
+/**
+ * Get local government areas for a specific state
+ * @param state - Name of the state (case-insensitive)
+ * @returns Array of LGA names
+ * @throws {Error} If state name is invalid or not found
+ * @example
+ * ```typescript
+ * const lgas = getLgas('Lagos');
+ * console.log(lgas.length); // 21
+ * ```
+ */
+export function getLgas(state: string): string[] {
+  const stateData = getState(state);
+  return stateData.lgas;
 }
 
 /**
@@ -55,69 +156,43 @@ export function states(): string[] {
  * @throws {Error} If state name is invalid or not found
  * @example
  * ```typescript
- * const districts = senatorial_districts('Lagos');
+ * const districts = getSenatorialDistricts('Lagos');
  * console.log(districts); // ['Lagos Central', 'Lagos East', 'Lagos West']
  * ```
  */
-export function senatorial_districts(state: string): string[] {
-  const normalizedState = normalize(state);
-
-  if (!normalizedState || normalizedState === "") {
-    throw new Error("Invalid Nigeria State");
-  }
-
-  const stateName = normalizeFCT(normalizedState);
-
-  const stateData = statesAndLocalGov.find(
-    (s) => normalize(s.state) === normalize(stateName)
-  );
-
-  if (!stateData) {
-    throw new Error(`State "${state}" not found`);
-  }
-
+export function getSenatorialDistricts(state: string): string[] {
+  const stateData = getState(state);
   return stateData.senatorial_districts;
 }
 
 /**
- * Get complete data for a specific state including LGAs and senatorial districts
+ * Get major towns in a specific state
  * @param state - Name of the state (case-insensitive)
- * @returns State data object containing state name, LGAs, and senatorial districts
+ * @returns Array of major town names
  * @throws {Error} If state name is invalid or not found
  * @example
  * ```typescript
- * const lagosData = lgas('Lagos');
- * console.log(lagosData.state); // 'Lagos'
- * console.log(lagosData.lgas.length); // 20
+ * const towns = getTowns('Lagos');
+ * console.log(towns); // ['Ikeja', 'Lekki', 'Victoria Island', ...]
  * ```
  */
-export function lgas(state: string): StateData {
-  const normalizedState = normalize(state);
-
-  if (!normalizedState || normalizedState === "") {
-    throw new Error("Invalid Nigeria State");
-  }
-
-  const stateName = normalizeFCT(normalizedState);
-
-  const stateData = statesAndLocalGov.find(
-    (s) => normalize(s.state) === normalize(stateName)
-  );
-
-  if (!stateData) {
-    throw new Error(`State "${state}" not found`);
-  }
-
-  return stateData as StateData;
+export function getTowns(state: string): string[] {
+  const stateData = getState(state);
+  return stateData.towns;
 }
 
 // Export types for consumers
-export { State, StateData } from "./interface";
+export { State, StateData, StateWithCapital } from "./interface";
 
 // Default export for CommonJS compatibility
 export default {
-  all,
-  states,
-  senatorial_districts,
-  lgas,
+  getStates,
+  getStateNames,
+  getState,
+  getStateData,
+  getStatesAndCapitals,
+  getCapital,
+  getLgas,
+  getSenatorialDistricts,
+  getTowns,
 };

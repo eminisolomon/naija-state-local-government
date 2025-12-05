@@ -1,4 +1,4 @@
-<!-- Vue component example using ng-states-core -->
+<!-- Vue component example using ng-states-core v2.0.0 -->
 <template>
   <div>
     <select v-model="selectedState">
@@ -19,16 +19,16 @@
 
 <script setup lang="ts">
 import { ref, watch } from 'vue';
-import { states, lgas } from 'ng-states-core';
+import { getStateNames, getLgas } from 'ng-states-core';
 
-const allStates = states();
+const allStates = getStateNames();
 const selectedState = ref('');
 const localGovts = ref<string[]>([]);
 
 watch(selectedState, (newState) => {
   if (newState) {
-    const stateData = lgas(newState);
-    localGovts.value = stateData.lgas;
+    const lgas = getLgas(newState);
+    localGovts.value = lgas;
   }
 });
 </script>

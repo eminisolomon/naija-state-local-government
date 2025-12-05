@@ -1,17 +1,17 @@
-// React component example using @ng-states
+// React component example using ng-states-core v2.0.0
 import { useState, useEffect } from "react";
-import { states, lgas } from "ng-states-core";
+import { getStateNames, getLgas } from "ng-states-core";
 
 function StateSelector() {
   const [selectedState, setSelectedState] = useState("");
   const [localGovts, setLocalGovts] = useState<string[]>([]);
 
-  const allStates = states();
+  const allStates = getStateNames();
 
   useEffect(() => {
     if (selectedState) {
-      const stateData = lgas(selectedState);
-      setLocalGovts(stateData.lgas);
+      const lgas = getLgas(selectedState);
+      setLocalGovts(lgas);
     }
   }, [selectedState]);
 

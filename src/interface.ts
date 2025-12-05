@@ -1,24 +1,30 @@
 /**
- * Represents a Nigerian state with its local government areas and senatorial districts
+ * Represents a Nigerian state with complete location data
  */
 export interface State {
   /** Name of the state */
   state: string;
-  /** List of senatorial districts in the state */
-  senatorial_districts: string[];
+  /** Capital city of the state */
+  capital: string;
   /** List of local government areas in the state */
   lgas: string[];
+  /** List of senatorial districts in the state */
+  senatorial_districts: string[];
+  /** List of major towns in the state */
+  towns: string[];
 }
 
 /**
- * Response type for the lgas() function
+ * Response type for state data queries
  */
 export interface StateData extends State {}
 
 /**
- * Options for querying state data
+ * Simplified state with capital information
  */
-export interface QueryOptions {
-  /** Whether to perform case-sensitive matching */
-  caseSensitive?: boolean;
+export interface StateWithCapital {
+  /** Name of the state */
+  state: string;
+  /** Capital city of the state */
+  capital: string;
 }
