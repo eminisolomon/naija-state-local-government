@@ -70,7 +70,16 @@
       "Isiala-Ngwa North",
       "Umuahia South",
       "Ohanze"
-    ]
+    ],
+    "region": "South-East",
+    "postal_code": "440001",
+    "coordinates": {
+      "latitude": 5.52491,
+      "longitude": 7.49461
+    },
+    "population": 4200000,
+    "created": "1991-08-27",
+    "slogan": "God's Own State"
   },
   {
     "state": "Adamawa",
@@ -145,7 +154,16 @@
       "Mayo-Banyo",
       "Ngaoundere",
       "Mbondjanga"
-    ]
+    ],
+    "region": "North-East",
+    "postal_code": "640001",
+    "coordinates": {
+      "latitude": 9.203496,
+      "longitude": 12.49539
+    },
+    "population": 4500000,
+    "created": "1991-08-27",
+    "slogan": "Land of Beauty"
   },
   {
     "state": "Akwa Ibom",
@@ -240,7 +258,16 @@
       "Ikot Nta",
       "Essien Udim",
       "Mbo"
-    ]
+    ],
+    "region": "South-South",
+    "postal_code": "520001",
+    "coordinates": {
+      "latitude": 5.038963,
+      "longitude": 7.90947
+    },
+    "population": 5500000,
+    "created": "1987-09-23",
+    "slogan": "Land of Promise"
   },
   {
     "state": "Anambra",
@@ -336,7 +363,16 @@
       "Ikot Nta",
       "Essien Udim",
       "Mbo"
-    ]
+    ],
+    "region": "South-East",
+    "postal_code": "420001",
+    "coordinates": {
+      "latitude": 6.21269,
+      "longitude": 7.07199
+    },
+    "population": 5500000,
+    "created": "1976-02-03",
+    "slogan": "Light of the Nation"
   },
   {
     "state": "Bauchi",
@@ -391,7 +427,16 @@
       "Faggo",
       "Foggo",
       "Billiri"
-    ]
+    ],
+    "region": "North-East",
+    "postal_code": "740001",
+    "coordinates": {
+      "latitude": 10.3167,
+      "longitude": 9.85
+    },
+    "population": 6500000,
+    "created": "1976-02-03",
+    "slogan": "Pearl of Tourism"
   },
   {
     "state": "Bayelsa",
@@ -418,7 +463,16 @@
       "Oloibiri",
       "Otuoke",
       "Yenagoa"
-    ]
+    ],
+    "region": "South-South",
+    "postal_code": "561001",
+    "coordinates": {
+      "latitude": 4.9229,
+      "longitude": 6.2625
+    },
+    "population": 2300000,
+    "created": "1996-10-01",
+    "slogan": "Glory of All Lands"
   },
   {
     "state": "Benue",
@@ -480,7 +534,16 @@
       "Tarka",
       "Foggo",
       "Billiri"
-    ]
+    ],
+    "region": "North-Central",
+    "postal_code": "970001",
+    "coordinates": {
+      "latitude": 7.73375,
+      "longitude": 8.52139
+    },
+    "population": 6000000,
+    "created": "1976-02-03",
+    "slogan": "Food Basket of the Nation"
   },
   {
     "state": "Borno",
@@ -550,7 +613,16 @@
       "Gambaru",
       "Bornu Yassu",
       "Jere"
-    ]
+    ],
+    "region": "North-East",
+    "postal_code": "600001",
+    "coordinates": {
+      "latitude": 11.8469,
+      "longitude": 13.1571
+    },
+    "population": 5900000,
+    "created": "1976-02-03",
+    "slogan": "Home of Peace"
   },
   {
     "state": "Cross River",
@@ -594,7 +666,16 @@
       "Akpap",
       "Mkpani",
       "Esuk Otu"
-    ]
+    ],
+    "region": "South-South",
+    "postal_code": "540001",
+    "coordinates": {
+      "latitude": 4.95893,
+      "longitude": 8.32695
+    },
+    "population": 3700000,
+    "created": "1967-05-27",
+    "slogan": "The People's Paradise"
   },
   {
     "state": "Delta",
@@ -657,7 +738,16 @@
       "Isoko North",
       "Burutu",
       "Ekrejegbe"
-    ]
+    ],
+    "region": "South-South",
+    "postal_code": "320001",
+    "coordinates": {
+      "latitude": 6.19824,
+      "longitude": 6.73187
+    },
+    "population": 5700000,
+    "created": "1991-08-27",
+    "slogan": "The Big Heart"
   },
   {
     "state": "Ebonyi",
@@ -695,7 +785,16 @@
       "Amaigbo",
       "Unwana",
       "Ebonyi"
-    ]
+    ],
+    "region": "South-East",
+    "postal_code": "840001",
+    "coordinates": {
+      "latitude": 6.32485,
+      "longitude": 8.11368
+    },
+    "population": 2900000,
+    "created": "1996-10-01",
+    "slogan": "Salt of the Nation"
   },
   {
     "state": "Edo",
@@ -769,7 +868,16 @@
       "Uzebba",
       "Imiekuri",
       "Iyamho"
-    ]
+    ],
+    "region": "South-South",
+    "postal_code": "300001",
+    "coordinates": {
+      "latitude": 6.3392,
+      "longitude": 5.6189
+    },
+    "population": 4200000,
+    "created": "1991-08-27",
+    "slogan": "Heartbeat of the Nation"
   },
   {
     "state": "Ekiti",
@@ -823,7 +931,16 @@
       "Ekiti South-West",
       "Okemesi",
       "Efon"
-    ]
+    ],
+    "region": "South-West",
+    "postal_code": "360001",
+    "coordinates": {
+      "latitude": 7.62,
+      "longitude": 5.22
+    },
+    "population": 3300000,
+    "created": "1996-10-01",
+    "slogan": "Land of Honour and Integrity"
   },
   {
     "state": "Enugu",
@@ -891,7 +1008,16 @@
       "Ikolo",
       "Ukobu",
       "Nru Nsukka"
-    ]
+    ],
+    "region": "South-East",
+    "postal_code": "400001",
+    "coordinates": {
+      "latitude": 6.44132,
+      "longitude": 7.49883
+    },
+    "population": 4400000,
+    "created": "1991-08-27",
+    "slogan": "Coal City State"
   },
   {
     "state": "Federal Capital Territory",
@@ -922,7 +1048,16 @@
       "Galadima",
       "Galadimawa",
       "Jiwa"
-    ]
+    ],
+    "region": "North-Central",
+    "postal_code": "900001",
+    "coordinates": {
+      "latitude": 9.072264,
+      "longitude": 7.491302
+    },
+    "population": 3800000,
+    "created": "1976-02-03",
+    "slogan": "Centre of Unity"
   },
   {
     "state": "Gombe",
@@ -959,7 +1094,16 @@
       "Deba Habe",
       "Shinga",
       "Gamadadi"
-    ]
+    ],
+    "region": "North-East",
+    "postal_code": "760001",
+    "coordinates": {
+      "latitude": 10.283333,
+      "longitude": 11.166667
+    },
+    "population": 3400000,
+    "created": "1996-10-01",
+    "slogan": "Jewel in the Savannah"
   },
   {
     "state": "Imo",
@@ -1045,7 +1189,16 @@
       "Ezeoke Nsu",
       "Amaebu Ogwa",
       "Ikembara"
-    ]
+    ],
+    "region": "South-East",
+    "postal_code": "460001",
+    "coordinates": {
+      "latitude": 5.489059,
+      "longitude": 7.0175879
+    },
+    "population": 5400000,
+    "created": "1976-02-03",
+    "slogan": "Eastern Heartland"
   },
   {
     "state": "Jigawa",
@@ -1110,7 +1263,16 @@
       "Roni",
       "Sule Tankakar",
       "Taura"
-    ]
+    ],
+    "region": "North-West",
+    "postal_code": "720001",
+    "coordinates": {
+      "latitude": 11.70111,
+      "longitude": 9.34194
+    },
+    "population": 5800000,
+    "created": "1991-08-27",
+    "slogan": "New World"
   },
   {
     "state": "Kaduna",
@@ -1181,7 +1343,16 @@
       "Soba",
       "Tudun Wada",
       "Zangon Kataf"
-    ]
+    ],
+    "region": "North-West",
+    "postal_code": "800001",
+    "coordinates": {
+      "latitude": 10.52641,
+      "longitude": 7.43879
+    },
+    "population": 8300000,
+    "created": "1967-05-27",
+    "slogan": "Centre of Learning"
   },
   {
     "state": "Kano",
@@ -1275,7 +1446,16 @@
       "Ungogo",
       "Warawa",
       "Wudil"
-    ]
+    ],
+    "region": "North-West",
+    "postal_code": "700001",
+    "coordinates": {
+      "latitude": 12,
+      "longitude": 8.516667
+    },
+    "population": 13100000,
+    "created": "1967-05-27",
+    "slogan": "Centre of Commerce"
   },
   {
     "state": "Katsina",
@@ -1357,7 +1537,16 @@
       "Safana",
       "Sandamu",
       "Zango"
-    ]
+    ],
+    "region": "North-West",
+    "postal_code": "820001",
+    "coordinates": {
+      "latitude": 12.985531,
+      "longitude": 7.617144
+    },
+    "population": 8100000,
+    "created": "1987-09-23",
+    "slogan": "Home of Hospitality"
   },
   {
     "state": "Kebbi",
@@ -1410,7 +1599,16 @@
       "Bin Yauri",
       "Aliero",
       "Dandi"
-    ]
+    ],
+    "region": "North-West",
+    "postal_code": "860001",
+    "coordinates": {
+      "latitude": 12.4552,
+      "longitude": 4.1979
+    },
+    "population": 4400000,
+    "created": "1991-08-27",
+    "slogan": "Land of Equity"
   },
   {
     "state": "Kogi",
@@ -1476,7 +1674,16 @@
       "Omala",
       "Yagba East",
       "Yagba West"
-    ]
+    ],
+    "region": "North-Central",
+    "postal_code": "260001",
+    "coordinates": {
+      "latitude": 7.8023204,
+      "longitude": 6.733343
+    },
+    "population": 4500000,
+    "created": "1991-08-27",
+    "slogan": "Confluence State"
   },
   {
     "state": "Kwara",
@@ -1537,7 +1744,16 @@
       "Oyun",
       "Pamo Isin",
       "Pategi"
-    ]
+    ],
+    "region": "North-Central",
+    "postal_code": "240001",
+    "coordinates": {
+      "latitude": 8.49664,
+      "longitude": 4.54214
+    },
+    "population": 3400000,
+    "created": "1967-05-27",
+    "slogan": "State of Harmony"
   },
   {
     "state": "Lagos",
@@ -1596,7 +1812,16 @@
       "Ojo",
       "Orile",
       "Somolu"
-    ]
+    ],
+    "region": "South-West",
+    "postal_code": "100001",
+    "coordinates": {
+      "latitude": 6.601838,
+      "longitude": 3.3514863
+    },
+    "population": 15400000,
+    "created": "1967-05-27",
+    "slogan": "Centre of Excellence"
   },
   {
     "state": "Nasarawa",
@@ -1639,7 +1864,16 @@
       "Toto",
       "Umaish",
       "Wamba"
-    ]
+    ],
+    "region": "North-Central",
+    "postal_code": "960001",
+    "coordinates": {
+      "latitude": 8.4939,
+      "longitude": 8.51532
+    },
+    "population": 2500000,
+    "created": "1996-10-01",
+    "slogan": "Home of Solid Minerals"
   },
   {
     "state": "Niger",
@@ -1672,7 +1906,16 @@
       "Wushishi"
     ],
     "senatorial_districts": ["Niger East", "Niger North", "Niger South"],
-    "towns": ["Bida", "Kontagora", "Minna", "Suleja"]
+    "towns": ["Bida", "Kontagora", "Minna", "Suleja"],
+    "region": "North-Central",
+    "postal_code": "920001",
+    "coordinates": {
+      "latitude": 9.61524,
+      "longitude": 6.54776
+    },
+    "population": 5600000,
+    "created": "1976-02-03",
+    "slogan": "Power State"
   },
   {
     "state": "Ogun",
@@ -1743,7 +1986,16 @@
       "Owode",
       "Sagamu",
       "Wasinmi"
-    ]
+    ],
+    "region": "South-West",
+    "postal_code": "110001",
+    "coordinates": {
+      "latitude": 7.15571,
+      "longitude": 3.34509
+    },
+    "population": 5200000,
+    "created": "1976-02-03",
+    "slogan": "Gateway State"
   },
   {
     "state": "Ondo",
@@ -1808,7 +2060,16 @@
       "Ibule-Soro",
       "Isarun",
       "Okitipupa"
-    ]
+    ],
+    "region": "South-West",
+    "postal_code": "340001",
+    "coordinates": {
+      "latitude": 7.25256,
+      "longitude": 5.19312
+    },
+    "population": 4700000,
+    "created": "1976-02-03",
+    "slogan": "Sunshine State"
   },
   {
     "state": "Osun",
@@ -1887,7 +2148,16 @@
       "Orolu",
       "Osu",
       "Otan Ayegbaju"
-    ]
+    ],
+    "region": "South-West",
+    "postal_code": "230001",
+    "coordinates": {
+      "latitude": 7.77104,
+      "longitude": 4.55698
+    },
+    "population": 4700000,
+    "created": "1991-08-27",
+    "slogan": "Land of Virtue"
   },
   {
     "state": "Oyo",
@@ -1964,7 +2234,16 @@
       "Sepeteri",
       "Shaki",
       "Surulere"
-    ]
+    ],
+    "region": "South-West",
+    "postal_code": "200001",
+    "coordinates": {
+      "latitude": 7.37756,
+      "longitude": 3.90591
+    },
+    "population": 7800000,
+    "created": "1976-02-03",
+    "slogan": "Pace Setter State"
   },
   {
     "state": "Plateau",
@@ -2012,7 +2291,16 @@
       "Riyom",
       "Shendam",
       "Wase"
-    ]
+    ],
+    "region": "North-Central",
+    "postal_code": "930001",
+    "coordinates": {
+      "latitude": 9.9231,
+      "longitude": 8.892
+    },
+    "population": 4200000,
+    "created": "1976-02-03",
+    "slogan": "Home of Peace and Tourism"
   },
   {
     "state": "Rivers",
@@ -2065,7 +2353,16 @@
       "Oyigbo",
       "Port Harcourt",
       "Rumuigbo"
-    ]
+    ],
+    "region": "South-South",
+    "postal_code": "500001",
+    "coordinates": {
+      "latitude": 4.815554,
+      "longitude": 7.0498442
+    },
+    "population": 7300000,
+    "created": "1967-05-27",
+    "slogan": "Treasure Base of the Nation"
   },
   {
     "state": "Sokoto",
@@ -2121,7 +2418,16 @@
       "Wamako",
       "Wurno",
       "Yabo"
-    ]
+    ],
+    "region": "North-West",
+    "postal_code": "840001",
+    "coordinates": {
+      "latitude": 13.0533143,
+      "longitude": 5.3222722
+    },
+    "population": 5000000,
+    "created": "1976-02-03",
+    "slogan": "Seat of the Caliphate"
   },
   {
     "state": "Taraba",
@@ -2164,7 +2470,16 @@
       "Wukari",
       "Yorro",
       "Zing"
-    ]
+    ],
+    "region": "North-East",
+    "postal_code": "660001",
+    "coordinates": {
+      "latitude": 8.89367,
+      "longitude": 11.3596
+    },
+    "population": 3100000,
+    "created": "1991-08-27",
+    "slogan": "Nature's Gift to the Nation"
   },
   {
     "state": "Yobe",
@@ -2209,7 +2524,16 @@
       "Tarmua",
       "Yunusari",
       "Yusufari"
-    ]
+    ],
+    "region": "North-East",
+    "postal_code": "620001",
+    "coordinates": {
+      "latitude": 11.74697,
+      "longitude": 11.96083
+    },
+    "population": 3300000,
+    "created": "1991-08-27",
+    "slogan": "Pride of the Sahel"
   },
   {
     "state": "Zamfara",
@@ -2251,6 +2575,15 @@
       "Talata Mafara",
       "Tsafe",
       "Zurmi"
-    ]
+    ],
+    "region": "North-West",
+    "postal_code": "880001",
+    "coordinates": {
+      "latitude": 12.17024,
+      "longitude": 6.66412
+    },
+    "population": 4200000,
+    "created": "1996-10-01",
+    "slogan": "Farming is Our Pride"
   }
 ]

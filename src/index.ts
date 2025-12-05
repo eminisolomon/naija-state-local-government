@@ -181,8 +181,244 @@ export function getTowns(state: string): string[] {
   return stateData.towns;
 }
 
+/**
+ * Find which state an LGA belongs to
+ * @param lga - Name of the LGA (case-insensitive)
+ * @returns State data or undefined if not found
+ * @example
+ * ```typescript
+ * const state = findStateByLga('Ikeja');
+ * console.log(state?.state); // 'Lagos'
+ * ```
+ */
+export function findStateByLga(lga: string): StateData | undefined {
+  const normalizedLga = normalize(lga);
+  return (statesAndLocalGov as State[]).find((state) =>
+    state.lgas.some((stateLga) => normalize(stateLga) === normalizedLga)
+  ) as StateData | undefined;
+}
+
+/**
+ * Find which state a town belongs to
+ * @param town - Name of the town (case-insensitive)
+ * @returns State data or undefined if not found
+ * @example
+ * ```typescript
+ * const state = findStateByTown('Lekki');
+ * console.log(state?.state); // 'Lagos'
+ * ```
+ */
+export function findStateByTown(town: string): StateData | undefined {
+  const normalizedTown = normalize(town);
+  return (statesAndLocalGov as State[]).find((state) =>
+    state.towns.some((stateTown) => normalize(stateTown) === normalizedTown)
+  ) as StateData | undefined;
+}
+
+/**
+ * Get list of all geopolitical zones
+ * @returns Array of geopolitical zone names
+ * @example
+ * ```typescript
+ * const zones = getGeopoliticalZones();
+ * console.log(zones); // ['North-Central', 'North-East', ...]
+ * ```
+ */
+export function getGeopoliticalZones(): string[] {
+  const zones = new Set(
+    (statesAndLocalGov as State[]).map((state) => state.region)
+  );
+  return Array.from(zones).sort();
+}
+
+/**
+ * Get all states in a specific geopolitical zone
+ * @param region - Name of the geopolitical zone
+ * @returns Array of states in the zone
+ * @throws {Error} If region is invalid
+ * @example
+ * ```typescript
+ * const southWest = getStatesByRegion('South-West');
+ * console.log(southWest.map(s => s.state)); // ['Ekiti', 'Lagos', 'Ogun', 'Ondo', 'Osun', 'Oyo']
+ * ```
+ */
+export function getStatesByRegion(region: string): State[] {
+  if (!region || normalize(region) === "") {
+    throw new Error("Invalid region name");
+  }
+
+  const normalizedRegion = normalize(region);
+  const states = (statesAndLocalGov as State[]).filter(
+    (state) => normalize(state.region) === normalizedRegion
+  );
+
+  if (states.length === 0) {
+    throw new Error(`Region "${region}" not found`);
+  }
+
+  return states;
+}
+
+/**
+ * Get the geopolitical zone for a specific state
+ * @param state - Name of the state (case-insensitive)
+ * @returns Geopolitical zone name
+ * @throws {Error} If state name is invalid or not found
+ * @example
+ * ```typescript
+ * const region = getRegion('Lagos');
+ * console.log(region); // 'South-West'
+ * ```
+ */
+export function getRegion(state: string): string {
+  const stateData = getState(state);
+  return stateData.region;
+}
+
+/**
+ * Search for states by name (fuzzy search)
+ * @param query - Search query
+ * @returns Array of matching states
+ * @example
+ * ```typescript
+ * const results = searchStates('lag');
+ * console.log(results[0].state); // 'Lagos'
+ * ```
+ */
+export function searchStates(query: string): State[] {
+  if (!query || normalize(query) === "") {
+    return [];
+  }
+
+  const normalizedQuery = normalize(query);
+  return (statesAndLocalGov as State[]).filter((state) =>
+    normalize(state.state).includes(normalizedQuery)
+  );
+}
+
+/**
+ * Search for towns across all states
+ * @param query - Search query
+ * @returns Array of town search results with state information
+ * @example
+ * ```typescript
+ * const results = searchTowns('aba');
+ * console.log(results); // [{ state: 'Abia', town: 'Aba' }, ...]
+ * ```
+ */
+export function searchTowns(
+  query: string
+): Array<{ state: string; town: string }> {
+  if (!query || normalize(query) === "") {
+    return [];
+  }
+
+  const normalizedQuery = normalize(query);
+  const results: Array<{ state: string; town: string }> = [];
+
+  (statesAndLocalGov as State[]).forEach((state) => {
+    state.towns.forEach((town) => {
+      if (normalize(town).includes(normalizedQuery)) {
+        results.push({ state: state.state, town });
+      }
+    });
+  });
+
+  return results;
+}
+
+/**
+ * Get the postal code for a specific state
+ * @param state - Name of the state (case-insensitive)
+ * @returns Postal code
+ * @throws {Error} If state name is invalid or not found
+ * @example
+ * ```typescript
+ * const postalCode = getPostalCode('Lagos');
+ * console.log(postalCode); // '100001'
+ * ```
+ */
+export function getPostalCode(state: string): string {
+  const stateData = getState(state);
+  return stateData.postal_code;
+}
+
+/**
+ * Get coordinates for a specific state
+ * @param state - Name of the state (case-insensitive)
+ * @returns Coordinates object with latitude and longitude
+ * @throws {Error} If state name is invalid or not found
+ * @example
+ * ```typescript
+ * const coords = getCoordinates('Lagos');
+ * console.log(coords); // { latitude: 6.601838, longitude: 3.3514863 }
+ * ```
+ */
+export function getCoordinates(state: string): {
+  latitude: number;
+  longitude: number;
+} {
+  const stateData = getState(state);
+  return stateData.coordinates;
+}
+
+/**
+ * Get population for a specific state
+ * @param state - Name of the state (case-insensitive)
+ * @returns Population number
+ * @throws {Error} If state name is invalid or not found
+ * @example
+ * ```typescript
+ * const population = getPopulation('Lagos');
+ * console.log(population); // 15400000
+ * ```
+ */
+export function getPopulation(state: string): number {
+  const stateData = getState(state);
+  return stateData.population;
+}
+
+/**
+ * Get creation date for a specific state
+ * @param state - Name of the state (case-insensitive)
+ * @returns Creation date in ISO format
+ * @throws {Error} If state name is invalid or not found
+ * @example
+ * ```typescript
+ * const created = getCreationDate('Lagos');
+ * console.log(created); // '1967-05-27'
+ * ```
+ */
+export function getCreationDate(state: string): string {
+  const stateData = getState(state);
+  return stateData.created;
+}
+
+/**
+ * Get slogan for a specific state
+ * @param state - Name of the state (case-insensitive)
+ * @returns State slogan
+ * @throws {Error} If state name is invalid or not found
+ * @example
+ * ```typescript
+ * const slogan = getSlogan('Lagos');
+ * console.log(slogan); // 'Centre of Excellence'
+ * ```
+ */
+export function getSlogan(state: string): string {
+  const stateData = getState(state);
+  return stateData.slogan;
+}
+
 // Export types for consumers
-export { State, StateData, StateWithCapital } from "./interface";
+export {
+  State,
+  StateData,
+  StateWithCapital,
+  TownSearchResult,
+  GeopoliticalZone,
+  Coordinates,
+} from "./interface";
 
 // Default export for CommonJS compatibility
 export default {
@@ -195,4 +431,16 @@ export default {
   getLgas,
   getSenatorialDistricts,
   getTowns,
+  findStateByLga,
+  findStateByTown,
+  getGeopoliticalZones,
+  getStatesByRegion,
+  getRegion,
+  searchStates,
+  searchTowns,
+  getPostalCode,
+  getCoordinates,
+  getPopulation,
+  getCreationDate,
+  getSlogan,
 };
