@@ -1,7 +1,7 @@
-# @ng-states/core
+# ng-states-core
 
-[![npm version](https://img.shields.io/npm/v/@ng-states/core.svg)](https://www.npmjs.com/package/@ng-states/core)
-[![npm downloads](https://img.shields.io/npm/dm/@ng-states/core.svg)](https://www.npmjs.com/package/@ng-states/core)
+[![npm version](https://img.shields.io/npm/v/ng-states-core.svg)](https://www.npmjs.com/package/ng-states-core)
+[![npm downloads](https://img.shields.io/npm/dm/ng-states-core.svg)](https://www.npmjs.com/package/ng-states-core)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)](https://www.typescriptlang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -19,15 +19,15 @@
 ## 📦 Installation
 
 ```bash
-npm install @ng-states/core
+npm install ng-states-core
 ```
 
 ```bash
-yarn add @ng-states/core
+yarn add ng-states-core
 ```
 
 ```bash
-pnpm add @ng-states/core
+pnpm add ng-states-core
 ```
 
 ## 🚀 Quick Start
@@ -35,7 +35,7 @@ pnpm add @ng-states/core
 ### JavaScript (CommonJS)
 
 ```javascript
-const { all, states, lgas, senatorial_districts } = require("@ng-states/core");
+const { all, states, lgas, senatorial_districts } = require("ng-states-core");
 
 // Get all states with complete data
 const allStates = all();
@@ -62,7 +62,7 @@ import {
   senatorial_districts,
   State,
   StateData,
-} from "@ng-states/core";
+} from "ng-states-core";
 
 // Type-safe state data
 const allStates: State[] = all();
@@ -174,7 +174,7 @@ This package is written in TypeScript and provides full type definitions out of 
 ### Available Types
 
 ```typescript
-import type { State, StateData } from "@ng-states/core";
+import type { State, StateData } from "ng-states-core";
 
 // State interface
 interface State {

@@ -1,5 +1,5 @@
 {
-  "name": "@ng-states/core",
+  "name": "ng-states-core",
   "version": "1.0.0",
   "description": "A modern TypeScript library for Nigerian states, local governments, and senatorial districts with zero dependencies",
   "main": "dist/index.js",

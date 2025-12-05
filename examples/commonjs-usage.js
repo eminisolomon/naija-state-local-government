@@ -1,5 +1,5 @@
 // CommonJS usage example for @ng-states
-const { all, states, lgas, senatorial_districts } = require("@ng-states/core");
+const { all, states, lgas, senatorial_districts } = require("ng-states-core");
 
 // Get all states with complete data
 const allStates = all();

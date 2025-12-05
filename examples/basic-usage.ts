@@ -6,7 +6,7 @@ import {
   senatorial_districts,
   State,
   StateData,
-} from "@ng-states/core";
+} from "ng-states-core";
 
 // Get all states with type safety
 const allStates: State[] = all();

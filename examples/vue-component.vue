@@ -1,4 +1,4 @@
-<!-- Vue component example using @ng-states/core -->
+<!-- Vue component example using ng-states-core -->
 <template>
   <div>
     <select v-model="selectedState">
@@ -19,7 +19,7 @@
 
 <script setup lang="ts">
 import { ref, watch } from 'vue';
-import { states, lgas } from '@ng-states/core';
+import { states, lgas } from 'ng-states-core';
 
 const allStates = states();
 const selectedState = ref('');

@@ -1,6 +1,6 @@
 # Examples
 
-This directory contains usage examples for `@ng-states/core`.
+This directory contains usage examples for `ng-states-core`.
 
 ## Available Examples
 

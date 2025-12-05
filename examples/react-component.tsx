@@ -1,6 +1,6 @@
 // React component example using @ng-states
 import { useState, useEffect } from "react";
-import { states, lgas } from "@ng-states/core";
+import { states, lgas } from "ng-states-core";
 
 function StateSelector() {
   const [selectedState, setSelectedState] = useState("");
