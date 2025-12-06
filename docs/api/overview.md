@@ -1,75 +1,67 @@
 # API Overview
 
-ng-states-core provides a comprehensive set of functions to work with Nigerian state data.
+Complete reference for all functions in ng-states-core.
 
-## Function Categories
+> [!TIP]
+> All functions are case-insensitive and handle FCT aliases automatically.
 
-### State Functions
+## Quick Links
 
-Core functions for retrieving state information.
+- **[State Functions](#state-functions)** - Get state data
+- **[LGA Functions](#lga-location-functions)** - Work with LGAs and towns
+- **[Region Functions](#region-functions)** - Filter by geopolitical zones
+- **[Search Functions](#search-functions)** - Search states and towns
+- **[Metadata Functions](#metadata-functions)** - Get coordinates, population, etc.
 
-- [`getStates()`](/api/states#getstates) - Get all states
-- [`getStateNames()`](/api/states#getstatenames) - Get state names
-- [`getState(state)`](/api/states#getstate) - Get specific state
-- [`getStateData(state)`](/api/states#getstatedata) - Alias for getState
-- [`getStatesAndCapitals()`](/api/states#getstatesandcapitals) - Get states with capitals
-- [`getCapital(state)`](/api/states#getcapital) - Get state capital
-- [`getLgas(state)`](/api/states#getlgas) - Get LGAs
-- [`getSenatorialDistricts(state)`](/api/states#getsenatorialdistricts) - Get senatorial districts
-- [`getTowns(state)`](/api/states#gettowns) - Get major towns
+For detailed documentation with examples, see the [API Reference](/api-reference).
 
-### Search Functions
+## State Functions
 
-Find states by various criteria.
+| Function                 | Description                            |
+| ------------------------ | -------------------------------------- |
+| `getStates()`            | Get all states with complete data      |
+| `getStateNames()`        | Get list of all state names            |
+| `getState(state)`        | Get complete data for a specific state |
+| `getStateData(state)`    | Alias for getState()                   |
+| `getStatesAndCapitals()` | Get all states with their capitals     |
+| `getCapital(state)`      | Get the capital city of a state        |
 
-- [`findStateByLga(lga)`](/api/search#findstatebylga) - Find state by LGA
-- [`findStateByTown(town)`](/api/search#findstatebytown) - Find state by town
-- [`searchStates(query)`](/api/search#searchstates) - Fuzzy search states
-- [`searchTowns(query)`](/api/search#searchtowns) - Search towns
+## LGA & Location Functions
 
-### Geopolitical Zone Functions
+| Function                        | Description                            |
+| ------------------------------- | -------------------------------------- |
+| `getLgas(state)`                | Get local government areas for a state |
+| `getSenatorialDistricts(state)` | Get senatorial districts for a state   |
+| `getTowns(state)`               | Get major towns in a state             |
+| `findStateByLga(lga)`           | Find which state an LGA belongs to     |
+| `findStateByTown(town)`         | Find which state a town belongs to     |
 
-Work with Nigeria's geopolitical zones.
+## Region Functions
 
-- [`getGeopoliticalZones()`](/api/zones#getgeopoliticalzones) - Get all zones
-- [`getStatesByRegion(region)`](/api/zones#getstatesbyregion) - Get states by zone
-- [`getRegion(state)`](/api/zones#getregion) - Get state's zone
+| Function                    | Description                           |
+| --------------------------- | ------------------------------------- |
+| `getGeopoliticalZones()`    | Get list of all geopolitical zones    |
+| `getStatesByRegion(region)` | Get all states in a geopolitical zone |
+| `getRegion(state)`          | Get the geopolitical zone for a state |
 
-### Metadata Functions
+## Search Functions
 
-Access additional state information.
+| Function              | Description                        |
+| --------------------- | ---------------------------------- |
+| `searchStates(query)` | Search for states by name          |
+| `searchTowns(query)`  | Search for towns across all states |
 
-- [`getPostalCode(state)`](/api/metadata#getpostalcode) - Get postal code
-- [`getCoordinates(state)`](/api/metadata#getcoordinates) - Get coordinates
-- [`getPopulation(state)`](/api/metadata#getpopulation) - Get population
-- [`getCreationDate(state)`](/api/metadata#getcreationdate) - Get creation date
-- [`getSlogan(state)`](/api/metadata#getslogan) - Get state slogan
+## Metadata Functions
 
-## Quick Reference
+| Function                 | Description                            |
+| ------------------------ | -------------------------------------- |
+| `getPostalCode(state)`   | Get postal code for a state            |
+| `getCoordinates(state)`  | Get geographic coordinates for a state |
+| `getPopulation(state)`   | Get population for a state             |
+| `getCreationDate(state)` | Get creation date for a state          |
+| `getSlogan(state)`       | Get slogan for a state                 |
 
-```typescript
-import {
-  // State functions
-  getStates,
-  getState,
-  getCapital,
-
-  // Search functions
-  findStateByLga,
-  searchStates,
-
-  // Zone functions
-  getStatesByRegion,
-
-  // Metadata
-  getCoordinates,
-  getPopulation,
-} from "ng-states-core";
-```
-
-## Type Definitions
-
-All functions are fully typed. See [Type Definitions](/api/types) for details.
+## TypeScript Types
 
 ```typescript
 interface State {
@@ -77,7 +69,7 @@ interface State {
   capital: string;
   region: string;
   postal_code: string;
-  coordinates: Coordinates;
+  coordinates: { latitude: number; longitude: number };
   population: number;
   created: string;
   slogan: string;
@@ -85,51 +77,18 @@ interface State {
   senatorial_districts: string[];
   towns: string[];
 }
-```
 
-## Error Handling
-
-Functions that accept state names throw errors for invalid input:
-
-```typescript
-try {
-  const state = getState("Invalid State");
-} catch (error) {
-  console.error(error.message); // 'State "Invalid State" not found'
-}
-```
-
-Search functions return `undefined` or empty arrays instead of throwing:
-
-```typescript
-const state = findStateByLga("Invalid LGA");
-console.log(state); // undefined
-
-const results = searchStates("xyz");
-console.log(results); // []
-```
-
-## Case Insensitivity
-
-All string inputs are case-insensitive:
-
-```typescript
-(getState("lagos") === getState("Lagos")) === getState("LAGOS");
-```
-
-## FCT Aliases
-
-The Federal Capital Territory can be referenced by multiple names:
-
-```typescript
-getState("FCT");
-getState("Abuja");
-getState("Federal Capital Territory");
-// All return the same state
+type GeopoliticalZone =
+  | "North-Central"
+  | "North-East"
+  | "North-West"
+  | "South-East"
+  | "South-South"
+  | "South-West";
 ```
 
 ## Next Steps
 
-- [State Functions](/api/states) - Detailed state function reference
-- [Search Functions](/api/search) - Search and filter capabilities
-- [Examples](/examples/basic) - See functions in action
+- [API Reference](/api-reference) - Detailed function reference with examples
+- [Examples](/examples) - Practical code examples
+- [Getting Started](/guide/getting-started) - Installation and quick start

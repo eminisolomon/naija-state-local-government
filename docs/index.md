@@ -17,7 +17,7 @@ hero:
       link: https://github.com/eminisolomon/ng-states-core
     - theme: alt
       text: API Reference
-      link: /api/overview
+      link: /api-reference
 
 features:
   - icon: 🎯
@@ -43,14 +43,6 @@ features:
   - icon: 📍
     title: Location Data
     details: Coordinates, postal codes, and geographic information for all states
-
-  - icon: 🚀
-    title: Modern API
-    details: Intuitive function names with comprehensive documentation and examples
-
-  - icon: ✅
-    title: Well Tested
-    details: 28+ tests ensuring reliability and correctness of all functions
 ---
 
 ## Quick Example
@@ -91,14 +83,6 @@ pnpm add ng-states-core
 
 :::
 
-## Why ng-states-core?
-
-- **🇳🇬 Made for Nigeria** - Accurate, up-to-date data for all Nigerian states
-- **👨‍💻 Developer Friendly** - Simple, intuitive API that just works
-- **📚 Well Documented** - Comprehensive guides and examples
-- **🔄 Actively Maintained** - Regular updates with community contributions
-- **⚡ Production Ready** - Used in real-world applications
-
 ## What's Included?
 
 ### State Data
@@ -117,19 +101,13 @@ pnpm add ng-states-core
 - Senatorial Districts - 109 total
 - Major Towns - 1000+ across all states
 
-### Powerful Functions
+### 21 Functions
 
 - State queries and searches
 - LGA and town lookups
 - Geopolitical zone filtering
 - Fuzzy search capabilities
 - Metadata accessors
-
-## Community
-
-- [GitHub Discussions](https://github.com/eminisolomon/ng-states-core/discussions)
-- [Report Issues](https://github.com/eminisolomon/ng-states-core/issues)
-- [Contribute](https://github.com/eminisolomon/ng-states-core/blob/main/CONTRIBUTING.md)
 
 ## License
 
